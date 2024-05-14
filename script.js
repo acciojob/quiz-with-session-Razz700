@@ -74,15 +74,13 @@ if(questions[j].answer==elem){
  userAnswers.push(elem.value);
 selectArray.push(i);}
     }); 
- if (userAnswers.length<5) {
- 	userAnswers.push("null");
- }
+ sessionStorage.clear();
+ localStorage.clear();
 sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
 localStorage.setItem('score',`${scoreCount}`);
 score.innerHTML=`Your score is ${scoreCount} out of 5`;
 });
     
-// });
 document.addEventListener('DOMContentLoaded',()=>{
    
    if ((sessionStorage.getItem('progress'))!=null) {
