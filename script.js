@@ -1,4 +1,8 @@
 //your JS code here.
+let userAnswers=[];
+let questionsElement=document.getElementById('questions');
+let btn=document.getElementById('submit');
+let score=document.getElementById('score');
 
 // Do not change code below this line
 // This code will just display the questions to the screen
@@ -54,3 +58,39 @@ function renderQuestions() {
   }
 }
 renderQuestions();
+// next
+let scoreCount=0;
+let selectArray=[];
+let j=0;
+let qselect=document.querySelectorAll("#questions>div>input");
+btn.addEventListener('click',()=>{
+    userAnswers=[];
+qselect.forEach((elem,i)=>{
+    if (elem.checked) {
+if(questions[j].answer==elem){
+    scoreCount++;
+    j++;
+}
+ userAnswers.push(elem.value);
+selectArray.push(i);}
+    }); 
+ //   console.log(userAnswers); 
+ //   console.log(selectArray,"index");
+// userAnswers.forEach((item,i)=>{
+// if(item==questions[i].answer){
+//     scoreCount++;
+// }
+sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
+localStorage.setItem('score',`${scoreCount}`);
+score.innerHTML=`Your score is ${scoreCount} out of 5`;
+});
+    
+// });
+document.addEventListener('DOMContentLoaded',()=>{
+   // console.log('hi');
+    console.log(sessionStorage.getItem('progress'));
+     userAnswers=JSON.parse(sessionStorage.getItem('progress'));
+     questionsElement.innerHTML="";
+    renderQuestions();
+});
+
