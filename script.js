@@ -89,7 +89,7 @@ if(item.answer==userAnswers[i]){
 localStorage.clear();
 //sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
 localStorage.setItem('score',`${scoreCount}`);
-score.innerHTML=`Your score is ${scoreCount} out of 5`;
+score.innerHTML=`Your score is ${scoreCount} out of 5.`;
 });
 qselect.forEach((elem,j)=>{
     elem.addEventListener("click",()=>{
