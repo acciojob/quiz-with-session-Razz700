@@ -74,12 +74,9 @@ if(questions[j].answer==elem){
  userAnswers.push(elem.value);
 selectArray.push(i);}
     }); 
- //   console.log(userAnswers); 
- //   console.log(selectArray,"index");
-// userAnswers.forEach((item,i)=>{
-// if(item==questions[i].answer){
-//     scoreCount++;
-// }
+ if (userAnswers.length<5) {
+ 	userAnswers.push("null");
+ }
 sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
 localStorage.setItem('score',`${scoreCount}`);
 score.innerHTML=`Your score is ${scoreCount} out of 5`;
