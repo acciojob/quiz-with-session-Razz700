@@ -74,7 +74,7 @@ qselect.forEach((elem,i)=>{
         console.log(elem.value);
 for (let i = 0; i < questions.length; i++) {
     if(questions[i].answer==elem.value){
-        scoreCount++;
+       // scoreCount++;
     }
 }
  userAnswers1.push(elem.value);
