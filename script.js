@@ -78,7 +78,7 @@ selectArray.push(i);}
  localStorage.clear();
 sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
 localStorage.setItem('score',`${scoreCount}`);
-score.innerHTML=`Your score is ${scoreCount} out of 5`;
+score.innerHTML=`Your score is ${localStorage.getItem('score')} out of 5`;
 });
     
 document.addEventListener('DOMContentLoaded',()=>{
