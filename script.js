@@ -71,7 +71,7 @@ btn.addEventListener('click',()=>{
     scoreCount=0;
 qselect.forEach((elem,i)=>{
     if (elem.checked) {
-        console.log("inside elem.checked");
+      //  console.log("inside elem.checked");
 for (let i = 0; i < userAnswers.length; i++) {
   if (elem.name==`question-${i}`) {
     userAnswers[i]=elem.value;
@@ -84,10 +84,24 @@ if(item.answer==userAnswers[i]){
     scoreCount++;
 }
 });
- console.log(userAnswers,'useranswer in submit btn');
-sessionStorage.clear();
+// console.log(userAnswers,'useranswer in submit btn');
+//sessionStorage.clear();
 localStorage.clear();
-sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
+//sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
 localStorage.setItem('score',`${scoreCount}`);
 score.innerHTML=`Your score is ${scoreCount} out of 5`;
 });
+qselect.forEach((elem,j)=>{
+    elem.addEventListener("click",()=>{
+       // console.log('clik=k');
+        userAnswers.forEach((item,i)=>{
+            if (elem.name==`question-${i}`) {
+                //console.log("inside changed",elem.value);
+    userAnswers[i]=elem.value;
+}
+        });
+ //console.log("after clikc",userAnswers);
+ sessionStorage.clear();
+ sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
+ });
+ });
