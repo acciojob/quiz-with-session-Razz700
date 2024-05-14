@@ -90,4 +90,17 @@ document.addEventListener('DOMContentLoaded',()=>{
    }  
 });
 
+//next
+qselect.forEach((elem,j)=>{
+    elem.addEventListener("click",()=>{
+    userAnswers=[];
+qselect.forEach((item,i)=>{
+if(item.checked){
+    userAnswers.push(item.value);
+}
+});
+sessionStorage.clear();
+sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
+});
+});
 
