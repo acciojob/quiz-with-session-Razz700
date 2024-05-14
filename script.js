@@ -1,5 +1,5 @@
 //your JS code here.
-let userAnswers=[];
+let userAnswers=[1,2,3,4,5];
 let questionsElement=document.getElementById('questions');
 let btn=document.getElementById('submit');
 let score=document.getElementById('score');
@@ -64,39 +64,30 @@ let qselect=document.querySelectorAll("#questions>div>input");
 if ((sessionStorage.getItem('progress'))!=null) {
     userAnswers=JSON.parse(sessionStorage.getItem('progress'));
     questionsElement.innerHTML="";
-   renderQuestions();  
+   renderQuestions(); 
+   qselect=document.querySelectorAll("#questions>div>input"); 
    }  
 btn.addEventListener('click',()=>{
-   userAnswers1=[];
     scoreCount=0;
 qselect.forEach((elem,i)=>{
     if (elem.checked) {
-        console.log(elem.value);
-for (let i = 0; i < questions.length; i++) {
-    if(questions[i].answer==elem.value){
-       // scoreCount++;
-    }
+        console.log("inside elem.checked");
+for (let i = 0; i < userAnswers.length; i++) {
+  if (elem.name==`question-${i}`) {
+    userAnswers[i]=elem.value;
+  }  
 }
- userAnswers1.push(elem.value);
 }
-    }); 
-    console.log(userAnswers,'useranswer in submit btn',userAnswers1);
-//sessionStorage.clear();
+});
+questions.forEach((item,i)=>{
+if(item.answer==userAnswers[i]){
+    scoreCount++;
+}
+});
+ console.log(userAnswers,'useranswer in submit btn');
+sessionStorage.clear();
 localStorage.clear();
-//sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
+sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
 localStorage.setItem('score',`${scoreCount}`);
 score.innerHTML=`Your score is ${scoreCount} out of 5`;
 });
-qselect.forEach((elem,j)=>{
-    elem.addEventListener("click",()=>{
-        console.log('clik=k');
-        userAnswers1=[];
-  qselect.forEach((item,i)=>{
- if(item.checked){
-    userAnswers1.push(item.value);
- }
- });
- sessionStorage.clear();
- sessionStorage.setItem(`progress`,JSON.stringify(userAnswers1));
- });
- });
