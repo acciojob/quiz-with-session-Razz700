@@ -88,9 +88,13 @@ score.innerHTML=`Your score is ${scoreCount} out of 5`;
 // });
 document.addEventListener('DOMContentLoaded',()=>{
    // console.log('hi');
-    console.log(sessionStorage.getItem('progress'));
-     userAnswers=JSON.parse(sessionStorage.getItem('progress'));
-     questionsElement.innerHTML="";
-    renderQuestions();
+    //console.log(sessionStorage.getItem('progress'));
+   if ((sessionStorage.getItem('progress'))!=null) {
+    userAnswers=JSON.parse(sessionStorage.getItem('progress'));
+    questionsElement.innerHTML="";
+   renderQuestions();  
+   }
+   
 });
+
 
