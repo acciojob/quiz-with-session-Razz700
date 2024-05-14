@@ -60,47 +60,43 @@ function renderQuestions() {
 renderQuestions();
 // next
 let scoreCount=0;
-let selectArray=[];
-let j=0;
 let qselect=document.querySelectorAll("#questions>div>input");
-btn.addEventListener('click',()=>{
-    userAnswers=[];
-qselect.forEach((elem,i)=>{
-    if (elem.checked) {
-if(questions[j].answer==elem){
-    scoreCount++;
-    j++;
-}
- userAnswers.push(elem.value);
-selectArray.push(i);}
-    }); 
- sessionStorage.clear();
- localStorage.clear();
-sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
-localStorage.setItem('score',`${scoreCount}`);
-score.innerHTML=`Your score is ${localStorage.getItem('score')} out of 5`;
-});
-    
-document.addEventListener('DOMContentLoaded',()=>{
-   
-   if ((sessionStorage.getItem('progress'))!=null) {
+if ((sessionStorage.getItem('progress'))!=null) {
     userAnswers=JSON.parse(sessionStorage.getItem('progress'));
     questionsElement.innerHTML="";
    renderQuestions();  
    }  
+btn.addEventListener('click',()=>{
+   userAnswers1=[];
+    scoreCount=0;
+qselect.forEach((elem,i)=>{
+    if (elem.checked) {
+        console.log(elem.value);
+for (let i = 0; i < questions.length; i++) {
+    if(questions[i].answer==elem.value){
+        scoreCount++;
+    }
+}
+ userAnswers1.push(elem.value);
+}
+    }); 
+    console.log(userAnswers,'useranswer in submit btn',userAnswers1);
+//sessionStorage.clear();
+localStorage.clear();
+//sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
+localStorage.setItem('score',`${scoreCount}`);
+score.innerHTML=`Your score is ${scoreCount} out of 5`;
 });
-
-//next
 qselect.forEach((elem,j)=>{
     elem.addEventListener("click",()=>{
-    userAnswers=[];
-qselect.forEach((item,i)=>{
-if(item.checked){
-    userAnswers.push(item.value);
-}
-});
-sessionStorage.clear();
-sessionStorage.setItem(`progress`,JSON.stringify(userAnswers));
-});
-});
-
+        console.log('clik=k');
+        userAnswers1=[];
+  qselect.forEach((item,i)=>{
+ if(item.checked){
+    userAnswers1.push(item.value);
+ }
+ });
+ sessionStorage.clear();
+ sessionStorage.setItem(`progress`,JSON.stringify(userAnswers1));
+ });
+ });
